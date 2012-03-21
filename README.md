@@ -37,22 +37,24 @@ The API is still in flux and may change without notice.
     }
 
     -- conf/test.lua:
+    local http = require "resty.http"
+    local curl = http.curl
+    local _URL = "http://sina.com"
+    local res = curl(url=_URL)
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_PUT,body = 'hello, world')
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_POST,body = 'hello, world')
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_POST,body = 'user=zq&passwd=123456')
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_DELETE,path = '/blog/2012/1/1')
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_OPTIONS,path = '/blog/2012/1/1')
+    -- or
+    local res = curl(url=_URL,method=ngx.HTTP_HEAD,path = '/blog/2012/1/1')
 
-    curl = require "resty.http"
-    local url = "http://sina.com"
-    local res = curl(url)
-    -- or
-    local res = curl(url,ngx.HTTP_PUT,body = 'hello, world')
-    -- or
-    local res = curl(url,ngx.HTTP_POST,body = 'hello, world')
-    -- or
-    local res = curl(url,ngx.HTTP_POST,body = 'user=zq&passwd=123456')
-    -- or
-    local res = curl(url,ngx.HTTP_DELETE,uri = '/blog/2012/1/1')
-    -- or
-    local res = curl(url,ngx.HTTP_OPTIONS,uri = '/blog/2012/1/1')
-    -- or
-    local res = curl(url,ngx.HTTP_HEAD,uri = '/blog/2012/1/1')
+    local ok = curl:perform()
     if res.status ~= 200 then
         ngx.say(res.header)
         ngx.say(res.body)
