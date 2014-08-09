@@ -2,8 +2,11 @@ lua-rest-http
 ====================================================================
 ~ 为 ngx_lua 基于 LuaJIT 建立的基本 HTTP 协议请求工具
 
-- 替代 luacurl
-- 使用 [OpenRest](http://openresty.org) 的 *[cosocket](http://agentzh.org/misc/slides/ngx-openresty-ecosystem/index.html#58)* 技术,支持高并发非阻塞的远程 HTTP 访问!
+- 140808 明确放弃折腾
+- 推荐大家使用已经完成的: **[pintsized/lua-resty-http](https://github.com/pintsized/lua-resty-http)**
+
+原先的目标:替代 [Lua-cURL by msva](http://msva.github.io/lua-curl/#installation)
+使用 [OpenRest](http://openresty.org) 的 *[cosocket](http://agentzh.org/misc/slides/ngx-openresty-ecosystem/index.html#58)* 技术,支持高并发非阻塞的远程 HTTP 访问!
 
 状态 Status
 ====================================================================
